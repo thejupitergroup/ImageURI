@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords"
+        content="Convert image to base64 online, Support JPG, PNG, GIF, Webp, BMP, image to base64 converter, base64, convert, image, online, converter">
+    <meta name="description" content="Convert image to base64 online. Support JPG, PNG, GIF, Webp, BMP.">
+    <title>Image To Base64 Converter | PiXELCONVERTOR</title>
+    
+</head>
+
+<body>
+    <div class="header">
+        <h1>PIXELCONVERTOR</h1>
+    </div>
+
+    <style>
+        @font-face {
+            font-family: 'Roadway';
+            src: url(https://delivercdn.pages.dev/fonts/roadway/roadway.ttf);
+        }
+
+        @font-face {
+            font-family: 'Roadway Bold';
+            src: url(https://delivercdn.pages.dev/fonts/roadway/roadway-bold.ttf);
+        }
+
+        @font-face {
+            font-family: 'Roadway Mono';
+            src: url(https://delivercdn.pages.dev/fonts/roadway/roadwaymono.ttf);
+        }
+
+        #adspace {
+            width: 315px;
+            margin: 0 auto;
+        }
+
+        #adspace img {
+            float: left;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        p {
+            text-align: center;
+            font-family: 'Roadway';
+        }
+
+        .b1 {
+            font-family: 'Roadway Bold';
+            font-size: 26px;
+        }
+
+        b {
+            font-family: 'Roadway Bold';
+        }
+
+        h1 {
+            font-family: 'Roadway Bold';
+            margin:0;
+        }
+
+        html,body{
+            font-family: 'Roadway';
+            font-size: 18px;
+            padding:0;
+            margin:0;
+            background:#eee;
+        }
+        .header{
+            background:#607d8b;
+            padding:20px 30px;
+            color:#fff;
+        }
+        .content{
+            margin:auto;
+            text-align:center;
+            background:#fff;
+        }
+        .img{
+            background:#fff;
+            padding:10px;
+            text-align:center;
+        }
+        #show-img{
+            max-width:160px;
+            vertical-align:middle;
+        }
+        .upload{
+            display:inline-block;
+            position:relative;
+            padding:50px;
+            margin:50px 0;
+        }
+        #upload-trigger{
+            font-family: 'Roadway Bold';
+            display:block;
+            width:238px;
+            padding:20px 0;
+            background:#8bc34a;
+            border-radius:5px;
+            font-size:20px;
+            color:#fff;
+            transition:0.25s;
+        }
+        input#upload-img:hover+#upload-trigger{
+            background:#9ccc65;
+        }
+        input#upload-img{
+            opacity:0;
+            cursor:pointer;
+            position:absolute;
+            top:50px;
+            left:50px;
+            bottom:50px;
+            right:50px;
+        }
+        #result{
+            background:#eee;
+            padding:40px 0;
+        }
+        #result-continer{
+            width:520px;
+            margin:auto;
+            overflow:auto;
+            text-align:left;
+        }
+        #result-continer span{
+            margin-bottom:5px;
+            display:block;
+        }
+        .img-preview{
+            float:left;
+            padding:10px 0;
+            max-width:180px;
+        }
+        #img-details{
+            text-align:left;
+            font-size:12px;
+            padding-top:10px;
+            max-width:180px;
+            line-height:1.4;
+            word-break:break-all;
+            word-break:break-word;
+            font-size: 16px;
+        }
+        #img-name{
+            margin-bottom:5px;
+            font-size: 16px;
+        }
+        .code{
+            width:310px;
+            padding:10px 0;
+            float:right;
+        }
+        #base64{
+            font-family: 'Roadway Mono';
+            word-break:break-all;
+            padding:10px;
+            background:#fff;
+            height:220px;
+            text-align:left;
+            width:285px;
+            resize:none;
+        }
+        .footer{
+            background:#fff;
+        }
+    </style>
+
+    <div id="adspace">
+        <script type="text/javascript">
+        </script>
+    </div>
+    <p><b>Convert any image to Base64 online. Supported files include JPEG/JPG, PNG, GIF, WEBP, BMP.</b></p>
+    <div class="content">
+        <div class="upload">
+            <input id="upload-img" type="file" accept="image/*" />
+            <a id="upload-trigger">Select Image...</a>
+        </div>
+        <div id="result" style="display:none" class="">
+            <div id="result-continer">
+                <div class="img-preview">
+                    <span>Preview</span>
+                    <div class="img">
+                        <img id="show-img" src="" />
+                    </div>
+                    <div id="img-details">
+                        <div id="img-name"></div>
+                        <div id="img-size"></div>
+                    </div>
+                </div>
+                <div class="code">
+                    <span>Data uri</span>
+                    <textarea readonly id="base64"></textarea>
+                </div>
+                <br />
+                <br />
+                <!--a id="download-img" href="#" target="_blank">download</a-->
+            </div>
+        </div>
+    </div>
+    <div class="footer">
+    </div>
+    <script>
+        result = document.getElementById('result')
+        input = document.getElementById('upload-img')
+        img = document.getElementById('show-img')
+        download = document.getElementById('download-img')
+        _name = document.getElementById('img-name')
+        _size = document.getElementById('img-size')
+        base64 = document.getElementById('base64')
+        input.addEventListener("change", loadImg)
+
+        function loadImg(e) {
+            //if(input.files[0]){
+            console.log(e)
+            _name.innerHTML = '<b>Filename:</b> ' + input.files[0].name
+            _size.innerHTML = '<b>Size:</b> ' + (input.files[0].size / 1024).toFixed(1) + 'kb'
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                result.style.display = "block"
+                img.src = e.target.result;
+                //download.href=img.src
+                base64.innerHTML = img.src
+            }
+            reader.readAsDataURL(this.files[0]);
+            //}
+        }
+        base64.addEventListener("focus", function () {
+            base64.select()
+        })
+    </script>
+</body>
