@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-
 <head>
     <meta charset="utf-8">
-    <meta name="keywords"
-        content="Convert image to base64 online, Support JPG, PNG, GIF, Webp, BMP, image to base64 converter, base64, convert, image, online, converter">
-    <meta name="description" content="Convert image to base64 online. Support JPG, PNG, GIF, Webp, BMP.">
-    <title>Image To Base64 Converter | PiXELCONVERTOR</title>
-    
+    <meta name="keywords" content="Convert files to base64 online, Support all file types, file to base64 converter, base64, convert, file, online, converter">
+    <meta name="description" content="Convert files to base64 online. Support all file types.">
+
+    <link rel="icon" type="image/png" href="https://jstatic.pages.dev/files/products/ide/images/impossible_ide_icon.png" sizes="30x30">
+    <link rel="icon" type="image/png" href="https://jstatic.pages.dev/files/products/ide/images/impossible_ide_icon.png" sizes="600x600">
+
+    <title>File To Base64 Converter | PiXELCONVERTOR</title>
 </head>
 
 <body>
     <div class="header">
-        <h1>PIXELCONVERTOR</h1>
+        <h1>WebCearveaux File Converter</h1>
     </div>
 
     <style>
@@ -44,12 +45,7 @@
 
         p {
             text-align: center;
-            font-family: 'Roadway';
-        }
-
-        .b1 {
-            font-family: 'Roadway Bold';
-            font-size: 26px;
+            font-family: 'Roadway Mono';
         }
 
         b {
@@ -58,114 +54,157 @@
 
         h1 {
             font-family: 'Roadway Bold';
-            margin:0;
+            margin: 0;
         }
 
-        html,body{
+        html, body {
             font-family: 'Roadway';
             font-size: 18px;
-            padding:0;
-            margin:0;
-            background:#eee;
+            padding: 0;
+            margin: 0;
+            background: #eee;
         }
-        .header{
-            background:#607d8b;
-            padding:20px 30px;
-            color:#fff;
+
+        .header {
+            background: #607d8b;
+            padding: 20px 30px;
+            color: #fff;
         }
-        .content{
-            margin:auto;
-            text-align:center;
-            background:#fff;
+
+        .content {
+            margin: auto;
+            text-align: center;
+            background: #fff;
         }
-        .img{
-            background:#fff;
-            padding:10px;
-            text-align:center;
+
+        .img {
+            background: #fff;
+            padding: 10px;
+            text-align: center;
         }
-        #show-img{
-            max-width:160px;
-            vertical-align:middle;
+
+        #show-img {
+            max-width: 160px;
+            vertical-align: middle;
         }
-        .upload{
-            display:inline-block;
-            position:relative;
-            padding:50px;
-            margin:50px 0;
+        
+        .upload {
+            display: inline-block;
+            position: relative;
+            padding: 50px;
+            margin: 50px 0;
         }
-        #upload-trigger{
+
+        #upload-trigger {
             font-family: 'Roadway Bold';
-            display:block;
-            width:238px;
-            padding:20px 0;
-            background:#8bc34a;
-            border-radius:5px;
-            font-size:20px;
-            color:#fff;
-            transition:0.25s;
+            display: block;
+            width: 238px;
+            padding: 20px 0;
+            background: #8bc34a;
+            border-radius: 5px;
+            font-size: 20px;
+            color: #fff;
+            transition: 0.25s;
         }
-        input#upload-img:hover+#upload-trigger{
-            background:#9ccc65;
+
+        input#upload-img:hover+#upload-trigger {
+            background: #9ccc65;
         }
-        input#upload-img{
-            opacity:0;
-            cursor:pointer;
-            position:absolute;
-            top:50px;
-            left:50px;
-            bottom:50px;
-            right:50px;
+        
+        input#upload-img {
+            opacity: 0;
+            cursor: pointer;
+            position: absolute;
+            top: 50px;
+            left: 50px;
+            bottom: 50px;
+            right: 50px;
         }
-        #result{
-            background:#eee;
-            padding:40px 0;
+
+        #result {
+            background: #eee;
+            padding: 40px 0;
         }
-        #result-continer{
-            width:520px;
-            margin:auto;
-            overflow:auto;
-            text-align:left;
+
+        #result-continer {
+            width: 520px;
+            margin: auto;
+            overflow: auto;
+            text-align: left;
         }
-        #result-continer span{
-            margin-bottom:5px;
-            display:block;
+
+        #result-continer span {
+            margin-bottom: 5px;
+            display: block;
         }
-        .img-preview{
-            float:left;
-            padding:10px 0;
-            max-width:180px;
+
+        .img-preview {
+            float: left;
+            padding: 10px 0;
+            max-width: 180px;
         }
-        #img-details{
-            text-align:left;
-            font-size:12px;
-            padding-top:10px;
-            max-width:180px;
-            line-height:1.4;
-            word-break:break-all;
-            word-break:break-word;
+
+        #img-details {
+            text-align: left;
+            font-size: 12px;
+            padding-top: 10px;
+            max-width: 180px;
+            line-height: 1.4;
+            word-break: break-all;
+            word-break: break-word;
             font-size: 16px;
         }
-        #img-name{
-            margin-bottom:5px;
+
+        #img-name {
+            margin-bottom: 5px;
             font-size: 16px;
         }
-        .code{
-            width:310px;
-            padding:10px 0;
-            float:right;
+
+        .code {
+            width: 310px;
+            padding: 10px 0;
+            float: right;
         }
-        #base64{
+
+        #base64 {
             font-family: 'Roadway Mono';
-            word-break:break-all;
-            padding:10px;
-            background:#fff;
-            height:220px;
-            text-align:left;
-            width:285px;
-            resize:none;
+            word-break: break-all;
+            padding: 10px;
+            background: #fff;
+            height: 220px;
+            text-align: left;
+            width: 285px;
+            resize: none;
         }
-        .footer{
-            background:#fff;
+
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #10151d;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background-color: #bfc7d2;
+            border-radius: 10px;
+            border: 3px solid #10151d;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: #888d94;
+        }
+
+        ::-webkit-scrollbar-thumb:active {
+            background-color: #888d94;
+        }
+
+        /* ::-webkit-scrollbar-track-piece {
+            background-color: red;
+        } */
+
+        .footer {
+            background: #fff;
         }
     </style>
 
@@ -173,11 +212,13 @@
         <script type="text/javascript">
         </script>
     </div>
-    <p><b>Convert any image to Base64 online. Supported files include JPEG/JPG, PNG, GIF, WEBP, BMP.</b></p>
+
+    <p><b>Convert any file to Base64 online. Supported files include all types.</b></p>
+
     <div class="content">
         <div class="upload">
-            <input id="upload-img" type="file" accept="image/*" />
-            <a id="upload-trigger">Select Image...</a>
+            <input id="upload-img" type="file" />
+            <a id="upload-trigger">Select File...</a>
         </div>
         <div id="result" style="display:none" class="">
             <div id="result-continer">
@@ -192,7 +233,7 @@
                     </div>
                 </div>
                 <div class="code">
-                    <span>Data uri</span>
+                    <span>File URI</span>
                     <textarea readonly id="base64"></textarea>
                 </div>
                 <br />
@@ -201,35 +242,39 @@
             </div>
         </div>
     </div>
-    <div class="footer">
-    </div>
-    <script>
-        result = document.getElementById('result')
-        input = document.getElementById('upload-img')
-        img = document.getElementById('show-img')
-        download = document.getElementById('download-img')
-        _name = document.getElementById('img-name')
-        _size = document.getElementById('img-size')
-        base64 = document.getElementById('base64')
-        input.addEventListener("change", loadImg)
 
-        function loadImg(e) {
-            //if(input.files[0]){
-            console.log(e)
-            _name.innerHTML = '<b>Filename:</b> ' + input.files[0].name
-            _size.innerHTML = '<b>Size:</b> ' + (input.files[0].size / 1024).toFixed(1) + 'kb'
-            var reader = new FileReader();
+    <div class="footer"></div>
+
+    <script>
+        const result = document.getElementById('result');
+        const input = document.getElementById('upload-img');
+        const img = document.getElementById('show-img');
+        const _name = document.getElementById('img-name');
+        const _size = document.getElementById('img-size');
+        const base64 = document.getElementById('base64');
+        input.addEventListener("change", loadFile);
+
+        function loadFile(e) {
+            const file = input.files[0];
+            _name.innerHTML = '<b>Title:</b> ' + file.name;
+            _size.innerHTML = '<b>Size:</b> ' + (file.size / 1024).toFixed(1) + 'kb';
+            const reader = new FileReader();
             reader.onload = function (e) {
-                result.style.display = "block"
-                img.src = e.target.result;
-                //download.href=img.src
-                base64.innerHTML = img.src
-            }
-            reader.readAsDataURL(this.files[0]);
-            //}
+                result.style.display = "block";
+                if (file.type.startsWith('image/')) {
+                    img.src = e.target.result;
+                    img.style.display = 'block';
+                } else {
+                    img.style.display = 'none';
+                }
+                base64.innerHTML = e.target.result;
+            };
+            reader.readAsDataURL(file);
         }
+
         base64.addEventListener("focus", function () {
-            base64.select()
-        })
+            base64.select();
+        });
     </script>
 </body>
+</html>
